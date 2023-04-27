@@ -4,22 +4,28 @@ const loadCountries = () =>{
   .then(data => displayCountries(data));
 } 
   
-const displayCountries = countries =>{
-console.log(countries[0]);
-const countriesHTML= countries.map(country => getCountryHtml(country));
-// console.log(countriesHTML);
+const displayCountries = (countries) => {
 const container = document.getElementById('countries');
-container.innerHTML = countriesHTML.join(' ');
+
+console.log(countries[0]);
+ countries.map(country => {
+  const main = document.createElement('div');
+  main.classList = 'country'
+   const item = getCountryHtml(country)
+   main.innerHTML = item
+
+   container.appendChild(main)
+
+})
 }
+
+
 
 const getCountryHtml = country =>{
 
   return`
-  <div class = "country">
     <h2>${country.name.common} </h2>
-    <img src="${country.flags.png} "
-  </div>
-  
+    <img src="${country.flags.png}" />
   `
 }
 
